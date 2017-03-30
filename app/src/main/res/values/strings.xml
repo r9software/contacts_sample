@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MasterContacts</string>
+    <string name="title_search">Contacts</string>
+    <string name="title_call">Call</string>
+    <string name="title_groups">Groups</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
