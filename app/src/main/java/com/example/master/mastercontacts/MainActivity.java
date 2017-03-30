@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     readContactsFromDevice();
                 }else{
-                    Snackbar.make(findViewById(R.id.viewpager),"We could not receive the permission to read your contacts", Snackbar.LENGTH_SHORT);
+                    Snackbar.make(findViewById(R.id.viewpager),"We could not receive the permission to read your contacts", Snackbar.LENGTH_SHORT).show();
                 }
                 break;
             }
