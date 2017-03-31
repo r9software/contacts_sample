@@ -17,15 +17,19 @@ import android.widget.EditText;
 import com.example.master.mastercontacts.NewContactActivity;
 import com.example.master.mastercontacts.R;
 import com.example.master.mastercontacts.adapters.RecyclerViewAdapter;
+import com.example.master.mastercontacts.dao.ContactsSqliteImpl;
 import com.example.master.mastercontacts.model.Contact;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.app.Activity.RESULT_OK;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ContactsFragment extends Fragment {
+    private static final int ADD_NEW_CONTACT_REQUEST = 100;
     private List<Contact> contacts;
     private RecyclerView recyclerView;
     private RecyclerViewAdapter recyclerViewAdapter;
@@ -79,7 +83,7 @@ public class ContactsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent mIntent = new Intent(getActivity(), NewContactActivity.class);
-                startActivity(mIntent);
+                startActivityForResult(mIntent,ADD_NEW_CONTACT_REQUEST);
             }
         });
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
@@ -96,14 +100,20 @@ public class ContactsFragment extends Fragment {
     }
 
     private void initializeData() {
-        contacts = new ArrayList<>();
-        for (int x = 0; x < 10; x++) {
-            Contact contact = new Contact();
-            contact.setName("Contact " + x);
-            contact.setPhone1("111-222-333-" + x);
-            contact.setEmail("correo@correo.com");
-            contact.setGroupId(1);
-            contacts.add(contact);
+        ContactsSqliteImpl dao= new ContactsSqliteImpl();
+        contacts = dao.getContacts();
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        if (requestCode == ADD_NEW_CONTACT_REQUEST) {
+            // Make sure the request was successful
+            if (resultCode == RESULT_OK) {
+                ContactsSqliteImpl dao= new ContactsSqliteImpl();
+                contacts=dao.getContacts();
+                recyclerViewAdapter = new RecyclerViewAdapter(contacts, getActivity());
+                recyclerView.setAdapter(recyclerViewAdapter);
+            }
         }
     }
 

@@ -36,6 +36,7 @@ public class GroupDetailActivity extends AppCompatActivity {
         });
         int groupId=getIntent().getIntExtra(GROUP_ID,1);
         mAdapter= new ContactsArrayAdapter(this,contacts);
+        mList.setAdapter(mAdapter);
         updateContacts(groupId);
     }
 

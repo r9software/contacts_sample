@@ -8,6 +8,7 @@ import com.example.master.mastercontacts.model.Group;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 
 import static com.example.master.mastercontacts.dao.DataBaseOpenHelper.COLUMN_ADDRESS;
@@ -46,7 +47,7 @@ public class GroupsSqliteImpl extends AbstractBaseSqliteDao {
         insert(DataBaseOpenHelper.GROUPS_TABLE,cont,null,dbInsert);
     }
 
-    public List<Group> getGroups() {
+      public List<Group> getGroups() {
         StringBuffer sql = new StringBuffer("Select ");
         sql.append(COLUMN_ID).append(",");
         sql.append(DataBaseOpenHelper.COLUMN_NAME).append(",");
@@ -67,6 +68,30 @@ public class GroupsSqliteImpl extends AbstractBaseSqliteDao {
                     group.setName(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME)));
                     group.setDescription(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DESCRIPTION)));
                     result.add(group);
+                    cursor.moveToNext();
+                }
+            }
+        });
+        return result;
+    }
+    public HashMap<String,Integer> getHashGroups() {
+        StringBuffer sql = new StringBuffer("Select ");
+        sql.append(COLUMN_ID).append(",");
+        sql.append(DataBaseOpenHelper.COLUMN_NAME).append(",");
+        sql.append(DataBaseOpenHelper.COLUMN_DESCRIPTION).append(" from ");
+        sql.append(DataBaseOpenHelper.GROUPS_TABLE);
+        String[] args = new String[]{
+
+        };
+
+        final HashMap<String,Integer> result = new HashMap<>();
+        query(sql, args, new DbQueryInterface() {
+            @Override
+            public void onCursor(Cursor cursor) {
+                cursor.moveToFirst();
+                while (!cursor.isAfterLast()) {
+
+                    result.put(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME)),cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID)));
                     cursor.moveToNext();
                 }
             }
