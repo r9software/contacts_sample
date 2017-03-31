@@ -109,12 +109,16 @@ public class ContactsFragment extends Fragment {
         if (requestCode == ADD_NEW_CONTACT_REQUEST) {
             // Make sure the request was successful
             if (resultCode == RESULT_OK) {
-                ContactsSqliteImpl dao= new ContactsSqliteImpl();
-                contacts=dao.getContacts();
-                recyclerViewAdapter = new RecyclerViewAdapter(contacts, getActivity());
-                recyclerView.setAdapter(recyclerViewAdapter);
+                updateData();
             }
         }
+    }
+
+    public void updateData() {
+        ContactsSqliteImpl dao= new ContactsSqliteImpl();
+        contacts=dao.getContacts();
+        recyclerViewAdapter = new RecyclerViewAdapter(contacts, getActivity());
+        recyclerView.setAdapter(recyclerViewAdapter);
     }
 
 }
