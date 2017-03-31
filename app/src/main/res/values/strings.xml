@@ -5,4 +5,13 @@
     <string name="title_groups">Groups</string>
     <string name="preference_file_key">com.r9software.contacts.PREFERENCES</string>
     <string name="title_activity_group_detail">GroupDetail</string>
+    <string-array name="phone_types">
+        <item>Mobile</item>
+        <item>work</item>
+        <item>Home</item>
+        <item>Office</item>
+        <item>Fax</item>
+        <item>Viper</item>
+        <item>Other</item>
+    </string-array>
 </resources>
