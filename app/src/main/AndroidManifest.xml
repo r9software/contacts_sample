@@ -3,9 +3,10 @@
     package="com.example.master.mastercontacts">
 
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <application
-        android:allowBackup="true"
         android:name=".MasterContacts"
+        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
@@ -19,9 +20,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="1fa6c645a9b8483645c6c99c7e198e56dcaa92b5" />
+
+        <activity android:name=".NewContactActivity"></activity>
     </application>
 
 </manifest>
