@@ -65,17 +65,20 @@ public class MainActivity extends AppCompatActivity {
     private void validateContactsPermission() {
         if (ContextCompat.checkSelfPermission(getApplicationContext(),
                 Manifest.permission.READ_CONTACTS)
+                != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(getApplicationContext(),
+                Manifest.permission.CALL_PHONE)
                 != PackageManager.PERMISSION_GRANTED) {
 
             // Should we show an explanation?
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.READ_CONTACTS)) {
+                    Manifest.permission.READ_CONTACTS) || ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.CALL_PHONE)) {
 
                 // Show an expanation to the user *asynchronously* -- don't block
                 // this thread waiting for the user's response! After the user
                 // sees the explanation, try again to request the permission.
                 new AlertDialog.Builder(MainActivity.this)
-                        .setMessage("We need to access your contacts")
+                        .setMessage("The permissions are so we give you a better experience")
                         .setPositiveButton("OK", listener)
                         .setNegativeButton("Cancel", listener)
                         .create()
@@ -83,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 // No explanation needed, we can request the permission.
                 ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.READ_CONTACTS},
+                        new String[]{Manifest.permission.READ_CONTACTS,Manifest.permission.CALL_PHONE},
                         PERMISSIONS_REQUEST_READ_CONTACTS);
             }
         }
@@ -104,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
                 case BUTTON_POSITIVE:
                     // int which = -1
                     ActivityCompat.requestPermissions(
-                            MainActivity.this, new String[]{Manifest.permission.READ_CONTACTS},
+                            MainActivity.this, new String[]{Manifest.permission.READ_CONTACTS,Manifest.permission.CALL_PHONE},
                             PERMISSIONS_REQUEST_READ_CONTACTS);
                     dialog.dismiss();
                     break;

@@ -52,7 +52,7 @@ public class ContactsFragment extends Fragment {
     }
 
     private void initializeAdapter() {
-        RecyclerViewAdapter recyclerViewAdapter= new RecyclerViewAdapter(contacts);
+        RecyclerViewAdapter recyclerViewAdapter= new RecyclerViewAdapter(contacts,getActivity());
         recyclerView.setAdapter(recyclerViewAdapter);
     }
 
@@ -61,7 +61,8 @@ public class ContactsFragment extends Fragment {
         for (int x = 0; x < 10; x++) {
             Contact contact = new Contact();
             contact.setName("Contact " + x);
-            contact.setPhone1("phone " + x);
+            contact.setPhone1("111-222-333-" + x);
+            contact.setEmail("correo@correo.com");
             contacts.add(contact);
         }
     }

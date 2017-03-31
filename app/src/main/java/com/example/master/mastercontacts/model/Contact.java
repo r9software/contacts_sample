@@ -1,10 +1,12 @@
 package com.example.master.mastercontacts.model;
 
+import java.io.Serializable;
+
 /**
  * Created by master on 30/03/17.
  */
 
-public class Contact {
+public class Contact implements Serializable {
     private int id;
     private String name;
     private String lastName;
