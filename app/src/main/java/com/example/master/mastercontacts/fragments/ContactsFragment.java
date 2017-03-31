@@ -63,6 +63,7 @@ public class ContactsFragment extends Fragment {
             contact.setName("Contact " + x);
             contact.setPhone1("111-222-333-" + x);
             contact.setEmail("correo@correo.com");
+            contact.setGroupId(1);
             contacts.add(contact);
         }
     }

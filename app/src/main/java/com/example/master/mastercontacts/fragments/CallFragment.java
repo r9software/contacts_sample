@@ -104,6 +104,8 @@ public class CallFragment extends Fragment implements View.OnClickListener {
             }
             case R.id.addContactView:{
                 Intent mIntent = new Intent(getActivity(), NewContactActivity.class);
+                if(!TextUtils.isEmpty(mPhoneString))
+                    mIntent.putExtra(NewContactActivity.PHONE,mPhoneString);
                 startActivity(mIntent);
                 break;
             }

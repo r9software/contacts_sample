@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.master.mastercontacts.GroupDetailActivity;
 import com.example.master.mastercontacts.NewContactActivity;
 import com.example.master.mastercontacts.R;
 import com.example.master.mastercontacts.model.Contact;
@@ -97,6 +98,24 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 }else{
                     Snackbar.make(personViewHolder.cardView,"We need your permission to perform this action", Snackbar.LENGTH_SHORT).show();
                 }
+            }
+        });
+        personViewHolder.mailButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mIntent= new Intent(Intent.ACTION_SENDTO);
+                String uriText = "mailto:" + Uri.encode(contactsList.get(i).getEmail());
+                Uri uri = Uri.parse(uriText);
+                mIntent.setData(uri);
+                context.startActivity(Intent.createChooser(mIntent, "Send mail..."));
+            }
+        });
+        personViewHolder.groupButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mIntent = new Intent(context, GroupDetailActivity.class);
+                mIntent.putExtra(GroupDetailActivity.GROUP_ID, contactsList.get(i).getGroupId());
+                context.startActivity(mIntent);
             }
         });
     }

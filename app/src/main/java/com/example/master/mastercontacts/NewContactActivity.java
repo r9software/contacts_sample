@@ -9,6 +9,7 @@ import com.example.master.mastercontacts.model.Contact;
 public class NewContactActivity extends AppCompatActivity {
 
     public static final String CONTACT = "contact";
+    public static final String PHONE = "phone";
     private TextView mtext;
 
     @Override
