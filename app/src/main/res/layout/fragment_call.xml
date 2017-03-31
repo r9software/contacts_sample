@@ -3,6 +3,275 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.master.mastercontacts.fragments.CallFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:onClick="fragmentOnClick"
+        android:id="@+id/addContactView">
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_contacts_accent_24dp"
+            android:layout_margin="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="20sp"
+            android:text="Add new contact"/>
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp">
+
+        <TextView
+            android:id="@+id/phoneTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text=""
+            android:textColor="#000"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:id="@+id/deleteImageView"
+            android:onClick="fragmentOnClick"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="14dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/colorAccent"
+            android:src="@android:drawable/ic_input_delete"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_below="@+id/phoneTextView"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/phoneTextView"
+                android:layout_centerHorizontal="true"
+                android:layout_weight=".5"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:layout_weight=".5"
+                    android:id="@+id/one"
+                    android:onClick="fragmentOnClick"
+                    android:text="1"
+                    android:textColor="@color/colorAccent"
+                    android:textAlignment="center"
+                    android:textSize="30sp" />
 
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:layout_weight=".5"
+                    android:id="@+id/two"
+                    android:onClick="fragmentOnClick"
+                    android:text="2"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:layout_weight=".5"
+                    android:id="@+id/three"
+                    android:onClick="fragmentOnClick"
+                    android:text="3"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="30sp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/phoneTextView"
+                android:layout_centerHorizontal="true"
+                android:layout_weight=".5"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:layout_weight=".5"
+                    android:id="@+id/four"
+                    android:onClick="fragmentOnClick"
+                    android:text="4"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="30sp" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:layout_weight=".5"
+                    android:id="@+id/five"
+                    android:onClick="fragmentOnClick"
+                    android:text="5"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:layout_weight=".5"
+                    android:id="@+id/six"
+                    android:onClick="fragmentOnClick"
+                    android:text="6"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="30sp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/phoneTextView"
+                android:layout_centerHorizontal="true"
+                android:layout_weight=".5"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:layout_weight=".5"
+                    android:id="@+id/seven"
+                    android:onClick="fragmentOnClick"
+                    android:text="7"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="30sp" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:layout_weight=".5"
+                    android:id="@+id/eight"
+                    android:onClick="fragmentOnClick"
+                    android:text="8"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:layout_weight=".5"
+                    android:id="@+id/nine"
+                    android:onClick="fragmentOnClick"
+                    android:text="9"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="30sp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/phoneTextView"
+                android:layout_centerHorizontal="true"
+                android:layout_weight=".5"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:layout_weight=".5"
+                    android:id="@+id/asterisk"
+                    android:onClick="fragmentOnClick"
+                    android:textAlignment="center"
+                    android:text="*"
+                    android:textColor="@color/colorText"
+                    android:textSize="30sp" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:layout_weight=".5"
+                    android:text="0"
+                    android:id="@+id/zero"
+                    android:onClick="fragmentOnClick"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:layout_weight=".5"
+                    android:id="@+id/hashtag"
+                    android:onClick="fragmentOnClick"
+                    android:text="#"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorText"
+                    android:textSize="30sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/phoneTextView"
+                android:layout_centerHorizontal="true"
+                android:layout_weight=".5"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:layout_weight=".5"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    android:visibility="invisible" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_margin="16dp"
+                    android:id="@+id/call"
+                    android:onClick="fragmentOnClick"
+                    android:layout_weight=".5"
+                    android:src="@drawable/ic_call_accent_24dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:layout_weight=".5"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    android:visibility="invisible" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
 </FrameLayout>
