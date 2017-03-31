@@ -12,13 +12,17 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.master.mastercontacts.GroupDetailActivity;
+import com.example.master.mastercontacts.NewGroupActivity;
 import com.example.master.mastercontacts.R;
 import com.example.master.mastercontacts.adapters.GroupsArrayAdapter;
+import com.example.master.mastercontacts.dao.GroupsSqliteImpl;
 import com.example.master.mastercontacts.model.Contact;
 import com.example.master.mastercontacts.model.Group;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,7 +30,9 @@ import java.util.List;
 public class GroupsFragment extends Fragment {
 
 
-    private ArrayList<Group> groups;
+    private static final int ADD_GROUP = 100;
+    private List<Group> groups= new ArrayList<>();
+    private GroupsArrayAdapter mAdapter;
 
     public GroupsFragment() {
         // Required empty public constructor
@@ -38,8 +44,16 @@ public class GroupsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_groups, container, false);
+
         ListView mList=(ListView)view.findViewById(R.id.group_list_view);
-        groups = new ArrayList<>();
+        mAdapter= new GroupsArrayAdapter(getContext(),groups);
+        view.findViewById(R.id.addNewFloatingAction).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mIntent = new Intent(getContext(), NewGroupActivity.class);
+                startActivityForResult(mIntent,ADD_GROUP);
+            }
+        });
         mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -48,17 +62,25 @@ public class GroupsFragment extends Fragment {
                 startActivity(mIntent);
             }
         });
-
-        for (int x = 0; x < 10; x++) {
-            Group group = new Group();
-            group.setId(x);
-            group.setName("Group " + x);
-            group.setDescription("111-222-333-" + x);
-            groups.add(group);
-        }
-        ArrayAdapter<Group> mAdapter= new GroupsArrayAdapter(getContext(),groups);
         mList.setAdapter(mAdapter);
+        updateGroups();
         return view;
     }
 
+    private void updateGroups() {
+        GroupsSqliteImpl dao= new GroupsSqliteImpl();
+        groups.clear();
+        groups.addAll(dao.getGroups());
+        mAdapter.notifyDataSetChanged();
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        if (requestCode == ADD_GROUP) {
+            // Make sure the request was successful
+            if (resultCode == RESULT_OK) {
+                updateGroups();
+            }
+        }
+    }
 }

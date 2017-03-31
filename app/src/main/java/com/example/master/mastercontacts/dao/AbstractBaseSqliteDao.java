@@ -17,31 +17,34 @@ public abstract class AbstractBaseSqliteDao {
     }
     public interface DbInsertInterface {
         void onInsert(long id);
-
     }
     protected void insert(String table, ContentValues val, String nullCollumnHack, DbInsertInterface insertInterface){
-        SQLiteDatabase database = DataBaseOpenHelper.getInstance().open(true);
-        if (database != null) {
-            try {
-                long result = database.insert(table,nullCollumnHack,val);
-                if (result != 0) {
-                    if (insertInterface != null) {
-                        insertInterface.onInsert(result);
+        try (SQLiteDatabase database = DataBaseOpenHelper.getInstance().openWritable()) {
+            if (database != null) {
+                try {
+                    long result = database.insert(table, nullCollumnHack, val);
+                    if (result != 0) {
+                        if (insertInterface != null) {
+                            insertInterface.onInsert(result);
+                        }
                     }
+                } catch (Exception e) {
+                    // most likely SQL syntax error: missing column, etc.
+                    Log.e(getClass().getSimpleName(), e.getMessage());
+                } finally {
+                    database.close();
                 }
-            } catch (Exception e) {
-                // most likely SQL syntax error: missing column, etc.
-                Log.e(getClass().getSimpleName(), e.getMessage());
-            } finally {
-                database.close();
             }
+        }catch (Exception e) {
+            // most likely SQL syntax error: missing column, etc.
+            Log.e(getClass().getSimpleName(), e.getMessage());
         }
 
     }
     SQLiteDatabase database;
     protected void insertMultiple(String table,ContentValues val,int count, String nullCollumnHack, DbInsertInterface insertInterface){
         if(database==null)
-            database = DataBaseOpenHelper.getInstance().open(true);
+            database = DataBaseOpenHelper.getInstance().openWritable();
         if (database != null) {
             try {
                 long result = database.insert(table,nullCollumnHack,val);
@@ -63,7 +66,7 @@ public abstract class AbstractBaseSqliteDao {
 
     }
     protected void update(String table, ContentValues values, String where, String[] args){
-        SQLiteDatabase database = DataBaseOpenHelper.getInstance().open(true);
+        SQLiteDatabase database = DataBaseOpenHelper.getInstance().openWritable();
         if (database != null) {
             try {
                 long result = database.update(table,values,where,args);
@@ -77,7 +80,7 @@ public abstract class AbstractBaseSqliteDao {
     }
     protected void query(String sql, String[] args, DbQueryInterface queryInterface) {
 
-        SQLiteDatabase database = DataBaseOpenHelper.getInstance().open(false);
+        SQLiteDatabase database = DataBaseOpenHelper.getInstance().openWritable();
         if (database != null) {
             try {
                 Cursor result = database.rawQuery(sql, args);

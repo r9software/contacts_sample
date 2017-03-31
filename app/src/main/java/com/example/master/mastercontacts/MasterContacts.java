@@ -39,6 +39,7 @@ public class MasterContacts extends Application {
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         boolean isFirstTime = sharedPref.getBoolean(IS_FIRST_TIME, true);
         //moveDatabase();
+        DataBaseOpenHelper.init(context);
         if (isFirstTime) {
             //set up database
             Log.w(TAG, "Set up of DB");
@@ -46,8 +47,6 @@ public class MasterContacts extends Application {
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putBoolean(IS_FIRST_TIME, false);
             editor.apply();
-        }else{
-            DataBaseOpenHelper.init(context);
         }
     }
 

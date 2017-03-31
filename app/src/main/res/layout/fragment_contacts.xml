@@ -12,19 +12,21 @@
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:textAlignment="center"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp"
             android:textStyle="bold"
             android:text="Search:"/>
+
         <EditText
+            android:id="@+id/searchContactTextView"
             android:layout_width="200dp"
             android:layout_height="50dp"
+            android:focusableInTouchMode="true"
             android:hint="Search Contacts"
-            android:textColorHint="@color/colorPrimary"
+            android:lines="1"
             android:shadowColor="@color/colorPrimary"
             android:textColorHighlight="@color/colorPrimary"
-            android:focusableInTouchMode="true"
-            android:id="@+id/searchContactTextView"/>
+            android:textColorHint="@color/colorPrimary" />
     </LinearLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/reciclerView"

@@ -8,27 +8,27 @@ import android.util.Log;
 public class DataBaseOpenHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "dao.db";
-    private static final String TABLE_CONTACTS = "CONTACTS";
-    private static final String COLUMN_ID = "_id";
-    private static final String COLUMN_NAME = "name";
-    private static final String COLUMN_LAST_NAME = "last_name";
-    private static final String COLUMN_NICK_NAME = "nick_name";
-    private static final String COLUMN_CORPORATION = "corporation";
-    private static final String COLUMN_TITLE = "title";
-    private static final String COLUMN_PHONE1 = "phone1";
-    private static final String COLUMN_TYPE1 = "type1";
-    private static final String COLUMN_PHONE2 = "phone2";
-    private static final String COLUMN_TYPE2 = "type2";
-    private static final String COLUMN_PHONE3 = "phone3";
-    private static final String COLUMN_TYPE3 = "type3";
-    private static final String COLUMN_EMAIL = "email";
-    private static final String COLUMN_ADDRESS = "address";
-    private static final String COLUMN_WEBSITE = "website";
-    private static final String COLUMN_GROUP_ID = "group_id";
-    private static final String COLUMN_NOTES = "notes";
-    private static final String COLUMN_IMAGE = "image";
-    private static final String COLUMN_BACKGROUND_IMAGE = "background_image";
-    private static final String CONTACTS_TABLE_CREATE = "CREATE TABLE `" + TABLE_CONTACTS + "` " +
+    public static final String TABLE_CONTACTS = "CONTACTS";
+    public static final String COLUMN_ID = "_id";
+    public static final String COLUMN_NAME = "name";
+    public static final String COLUMN_LAST_NAME = "last_name";
+    public static final String COLUMN_NICK_NAME = "nick_name";
+    public static final String COLUMN_CORPORATION = "corporation";
+    public static final String COLUMN_TITLE = "title";
+    public static final String COLUMN_PHONE1 = "phone1";
+    public static final String COLUMN_TYPE1 = "type1";
+    public static final String COLUMN_PHONE2 = "phone2";
+    public static final String COLUMN_TYPE2 = "type2";
+    public static final String COLUMN_PHONE3 = "phone3";
+    public static final String COLUMN_TYPE3 = "type3";
+    public static final String COLUMN_EMAIL = "email";
+    public static final String COLUMN_ADDRESS = "address";
+    public static final String COLUMN_WEBSITE = "website";
+    public static final String COLUMN_GROUP_ID = "group_id";
+    public static final String COLUMN_NOTES = "notes";
+    public static final String COLUMN_IMAGE = "image";
+    public static final String COLUMN_BACKGROUND_IMAGE = "background_image";
+    public static final String CONTACTS_TABLE_CREATE = "CREATE TABLE `" + TABLE_CONTACTS + "` " +
             "( `" + COLUMN_ID + "` INTEGER PRIMARY KEY AUTOINCREMENT," +
             " `" + COLUMN_NAME + "` TEXT, `" + COLUMN_LAST_NAME + "` TEXT, `" + COLUMN_NICK_NAME + "` TEXT, " +
             "`" + COLUMN_CORPORATION + "` TEXT, `" + COLUMN_TITLE + "` TEXT, `" + COLUMN_PHONE1 + "` TEXT, " +
@@ -36,8 +36,8 @@ public class DataBaseOpenHelper extends SQLiteOpenHelper {
             "`" + COLUMN_PHONE3 + "` TEXT, `" + COLUMN_TYPE3 + "` INTEGER, `" + COLUMN_EMAIL + "` TEXT, " +
             "`" + COLUMN_ADDRESS + "` TEXT, `" + COLUMN_WEBSITE + "` TEXT, `" + COLUMN_GROUP_ID + "` INTEGER, " +
             "`" + COLUMN_NOTES + "` TEXT, `" + COLUMN_IMAGE + "` TEXT, `" + COLUMN_BACKGROUND_IMAGE + "` TEXT )";
-    private static final String GROUPS_TABLE = "GROUPS";
-    private static final String COLUMN_DESCRIPTION = "description";
+    public static final String GROUPS_TABLE = "GROUPS";
+    public static final String COLUMN_DESCRIPTION = "description";
     private static final String GROUPS_TABLE_CREATE = "CREATE TABLE `" + GROUPS_TABLE + "` ( `"+COLUMN_ID+"` INTEGER PRIMARY KEY AUTOINCREMENT, `"+COLUMN_NAME+ "` TEXT, `" + COLUMN_DESCRIPTION + "` TEXT )";
     private static  Context appContext;
     private static DataBaseOpenHelper instance;

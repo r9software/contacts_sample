@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.master.mastercontacts.GroupDetailActivity">
-
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Contacts on the group"
+        android:textSize="24sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:gravity="center"/>
+    <ListView
+        android:layout_width="match_parent"
+        android:id="@+id/group_list_view"
+        android:layout_marginTop="60dp"
+        android:layout_height="match_parent">
+    </ListView>
+</RelativeLayout>
