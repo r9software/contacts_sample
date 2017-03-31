@@ -7,9 +7,12 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.example.master.mastercontacts.NewContactActivity;
 import com.example.master.mastercontacts.R;
@@ -25,9 +28,42 @@ import java.util.List;
 public class ContactsFragment extends Fragment {
     private List<Contact> contacts;
     private RecyclerView recyclerView;
+    private RecyclerViewAdapter recyclerViewAdapter;
 
     public ContactsFragment() {
         // Required empty public constructor
+    }
+
+    private TextWatcher searchTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            filterAdapter(s.toString());
+        }
+    };
+
+    private void filterAdapter(String s) {
+        List<Contact> temp = new ArrayList();
+        for (Contact c : contacts) {
+            //or use .contains(text)
+            if (c.getName().toLowerCase().contains(s.toLowerCase()) ||
+                    c.getPhone1().toLowerCase().contains(s.toLowerCase()) ||
+                    c.getPhone2().toLowerCase().contains(s.toLowerCase()) ||
+                    c.getEmail().toLowerCase().contains(s.toLowerCase())) {
+                temp.add(c);
+            }
+        }
+        //update recyclerview
+        recyclerViewAdapter.updateList(temp);
     }
 
     @Override
@@ -35,24 +71,27 @@ public class ContactsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View parentView = inflater.inflate(R.layout.fragment_contacts, container, false);
+        EditText mEdit = (EditText) parentView.findViewById(R.id.searchContactTextView);
+        mEdit.addTextChangedListener(searchTextWatcher);
         recyclerView = (RecyclerView) parentView.findViewById(R.id.reciclerView);
-        FloatingActionButton addContactButton= (FloatingActionButton) parentView.findViewById(R.id.addNewFloatingAction);
+        FloatingActionButton addContactButton = (FloatingActionButton) parentView.findViewById(R.id.addNewFloatingAction);
         addContactButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mIntent= new Intent(getActivity(), NewContactActivity.class);
+                Intent mIntent = new Intent(getActivity(), NewContactActivity.class);
                 startActivity(mIntent);
             }
         });
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
+
         initializeData();
         initializeAdapter();
         return parentView;
     }
 
     private void initializeAdapter() {
-        RecyclerViewAdapter recyclerViewAdapter= new RecyclerViewAdapter(contacts,getActivity());
+        recyclerViewAdapter = new RecyclerViewAdapter(contacts, getActivity());
         recyclerView.setAdapter(recyclerViewAdapter);
     }
 

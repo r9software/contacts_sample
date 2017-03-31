@@ -8,18 +8,18 @@ import java.io.Serializable;
 
 public class Contact implements Serializable {
     private int id;
-    private String name;
+    private String name="";
     private String lastName;
     private String nickName;
     private String corporation;
     private String title;
-    private String phone1;
-    private String phone2;
-    private String phone3;
+    private String phone1="";
+    private String phone2="";
+    private String phone3="";
     private String type1;
     private String type2;
     private String type3;
-    private String email;
+    private String email="";
     private String address;
     private String website;
     private int groupId;
