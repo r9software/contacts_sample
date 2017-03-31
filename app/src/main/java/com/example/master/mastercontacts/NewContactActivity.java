@@ -112,7 +112,8 @@ public class NewContactActivity extends AppCompatActivity {
             contact.setType3((String.valueOf(type3Edit.getSelectedItemPosition())));
             contact.setAddress(addressEdit.getText().toString());
             contact.setWebsite(websiteEdit.getText().toString());
-            contact.setGroupId(groups.get(groupEdit.getSelectedItem().toString()));
+            if (groupEdit.getSelectedItem() != null)
+                contact.setGroupId(groups.get(groupEdit.getSelectedItem().toString()));
             contact.setNotes(notesEdit.getText().toString());
         }
         //contact.setImagePath();
@@ -149,6 +150,8 @@ public class NewContactActivity extends AppCompatActivity {
         }
         ArrayAdapter<String> adp = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, groupValues);
+        if(groupValues.size()==0)
+            groupEdit.setVisibility(View.GONE);
         adp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         groupEdit.setAdapter(adp);
         findViewById(R.id.NickNameEditText).setVisibility(View.VISIBLE);
